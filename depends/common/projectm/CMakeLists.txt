@@ -14,6 +14,7 @@ externalproject_add(projectm
                       --disable-qt
                       --enable-preset-subdirs
                       --prefix=${OUTPUT_DIR}
+                      --enable-gles
                       --with-pic ${PROJECTM_CONFIG}
                     INSTALL_COMMAND ""
                     BUILD_IN_SOURCE 1)
