@@ -5,6 +5,11 @@ if (APP_RENDER_SYSTEM STREQUAL "gles")
   set(PROJECTM_CONFIG "--enable-gles")
 endif()
 
+set(LDFLAG_BUILD "")
+
+list(APPEND LDFLAG_BUILD -L${OUTPUT_DIR}/lib
+                         -Wl,-framework,OpenGLES)
+
 include(ExternalProject)
 externalproject_add(projectm
                     SOURCE_DIR ${CMAKE_SOURCE_DIR}
@@ -15,7 +20,7 @@ externalproject_add(projectm
                       --enable-preset-subdirs
                       --prefix=${OUTPUT_DIR}
                       --with-pic ${PROJECTM_CONFIG}
-                      LDFLAGS='-L${OUTPUT_DIR}/lib -Wl,-framework,OpenGLES'
+                      LDFLAGS=${LDFLAG_BUILD}
                     INSTALL_COMMAND ""
                     BUILD_IN_SOURCE 1)
 
