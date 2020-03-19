@@ -15,7 +15,7 @@ externalproject_add(projectm
                       --enable-preset-subdirs
                       --prefix=${OUTPUT_DIR}
                       --with-pic ${PROJECTM_CONFIG}
-                      LDFLAGS=${LDFLAGS} -Wl,-framework,OpenGLES
+                      LDFLAGS="${LDFLAGS} -Wl,-framework,OpenGLES"
                     INSTALL_COMMAND ""
                     BUILD_IN_SOURCE 1)
 
