@@ -14,13 +14,17 @@ include(ExternalProject)
 externalproject_add(projectm
                     SOURCE_DIR ${CMAKE_SOURCE_DIR}
                     UPDATE_COMMAND autoreconf -vif
-                    CONFIGURE_COMMAND CXXFLAGS=-I${OUTPUT_DIR}/include CFLAGS=-I${OUTPUT_DIR}/include ./configure
-                      --disable-shared
-                      --disable-qt
-                      --enable-preset-subdirs
-                      --prefix=${OUTPUT_DIR}
-                      --with-pic ${PROJECTM_CONFIG}
-                      LDFLAGS=${LDFLAG_BUILD}
+                    CONFIGURE_COMMAND
+                      bash --login -c
+                      "./configure \
+                      --disable-shared \
+                      --disable-qt \
+                      --enable-preset-subdirs \
+                      --prefix=${OUTPUT_DIR} \
+                      --with-pic ${PROJECTM_CONFIG} \
+                      CXXFLAGS=-I${OUTPUT_DIR}/include \
+                      CFLAGS=-I${OUTPUT_DIR}/include \
+                      LDFLAGS=${LDFLAG_BUILD}"
                     INSTALL_COMMAND ""
                     BUILD_IN_SOURCE 1)
 
