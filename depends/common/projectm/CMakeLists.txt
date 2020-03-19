@@ -15,7 +15,7 @@ externalproject_add(projectm
                       --enable-preset-subdirs
                       --prefix=${OUTPUT_DIR}
                       --enable-gles
-                      GL_LIBS="-framework OpenGLES -lOpenGLES"
+                      GL_LIBS=-Wl,-framework,OpenGLES
                       --with-pic ${PROJECTM_CONFIG}
                     INSTALL_COMMAND ""
                     BUILD_IN_SOURCE 1)
