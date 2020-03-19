@@ -5,11 +5,13 @@ if (APP_RENDER_SYSTEM STREQUAL "gles")
   set(PROJECTM_CONFIG "--enable-gles")
 endif()
 
+set(LDFLAG_build "-L${OUTPUT_DIR}/lib -framework OpenGLES")
+
 include(ExternalProject)
 externalproject_add(projectm
                     SOURCE_DIR ${CMAKE_SOURCE_DIR}
                     UPDATE_COMMAND autoreconf -vif
-                    CONFIGURE_COMMAND CXXFLAGS=-I${OUTPUT_DIR}/include GL_LIBS='-framework OpenGLES' CFLAGS=-I${OUTPUT_DIR}/include LDFLAGS=-L${OUTPUT_DIR}/lib ./configure
+                    CONFIGURE_COMMAND CXXFLAGS=-I${OUTPUT_DIR}/include CFLAGS=-I${OUTPUT_DIR}/include LDFLAGS=${LDFLAG_build} ./configure
                       --disable-shared
                       --disable-qt
                       --enable-preset-subdirs
