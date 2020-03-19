@@ -5,7 +5,10 @@ if (APP_RENDER_SYSTEM STREQUAL "gles")
   set(PROJECTM_CONFIG "--enable-gles")
 endif()
 
-set(LDFLAG_build "-L${OUTPUT_DIR}/lib -framework OpenGLES")
+set(LDFLAG_build "")
+
+list(APPEND LDFLAG_build -L${OUTPUT_DIR}/lib
+                         -Wl,-framework,OpenGLES)
 
 include(ExternalProject)
 externalproject_add(projectm
