@@ -5,26 +5,17 @@ if (APP_RENDER_SYSTEM STREQUAL "gles")
   set(PROJECTM_CONFIG "--enable-gles")
 endif()
 
-set(LDFLAG_build "")
-
-list(APPEND LDFLAG_build -L${OUTPUT_DIR}/lib
-                         -Wl,-framework,OpenGLES
-                         -L${CMAKE_CURRENT_SOURCE_DIR}/lib)
-
 include(ExternalProject)
 externalproject_add(projectm
                     SOURCE_DIR ${CMAKE_SOURCE_DIR}
                     UPDATE_COMMAND autoreconf -vif
-                    CONFIGURE_COMMAND  bash --login -c "./configure \
-                      LDFLAGS=${LDFLAG_build} \
-                      CFLAGS='-I${OUTPUT_DIR}/include -I${CMAKE_INSTALL_PREFIX}/include ${CMAKE_C_FLAGS}' \
-                      CXXFLAGS='-I${OUTPUT_DIR}/include -I${CMAKE_INSTALL_PREFIX}/include ${CMAKE_C_FLAGS}' \
-                      --disable-shared \
-                      --disable-qt \
-                      --enable-preset-subdirs \
-                      --prefix=${OUTPUT_DIR} \
-                      --enable-gles \
-                      --with-pic ${PROJECTM_CONFIG}"}
+                    CONFIGURE_COMMAND CXXFLAGS=-I${OUTPUT_DIR}/include CFLAGS=-I${OUTPUT_DIR}/include LDFLAGS=-L${OUTPUT_DIR}/lib ./configure
+                      --disable-shared
+                      --disable-qt
+                      --enable-preset-subdirs
+                      --prefix=${OUTPUT_DIR}
+                      --with-pic ${PROJECTM_CONFIG}
+                      LDFLAGS=${LDFLAGS} -Wl,-framework,OpenGLES
                     INSTALL_COMMAND ""
                     BUILD_IN_SOURCE 1)
 
