@@ -23,7 +23,7 @@ externalproject_add(projectm
                       --enable-preset-subdirs \
                       --prefix=${OUTPUT_DIR} \
                       --enable-gles \
-                      --with-pic ${PROJECTM_CONFIG""}
+                      --with-pic ${PROJECTM_CONFIG"}
                     INSTALL_COMMAND ""
                     BUILD_IN_SOURCE 1)
 
