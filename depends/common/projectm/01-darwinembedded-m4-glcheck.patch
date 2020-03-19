@@ -1,0 +1,11 @@
+--- a/m4/autoconf-archive/ax_check_gl.m4
++++ b/m4/autoconf-archive/ax_check_gl.m4
+@@ -276,7 +276,7 @@
+ 
+  dnl this was cache
+  _AX_CHECK_GL_SAVE_FLAGS([CFLAGS])
+- AC_CHECK_HEADERS([GL/gl.h OpenGL/gl.h GLES/gl.h],
++ AC_CHECK_HEADERS([GL/gl.h OpenGL/gl.h GLES/gl.h OpenGL/ES3/gl.h],
+    [ax_check_gl_have_headers="yes";break])
+  _AX_CHECK_GL_RESTORE_FLAGS([CFLAGS])
+ 
