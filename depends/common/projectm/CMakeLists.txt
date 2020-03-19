@@ -17,8 +17,8 @@ externalproject_add(projectm
                     UPDATE_COMMAND autoreconf -vif
                     CONFIGURE_COMMAND  bash --login -c "./configure \
                       LDFLAGS=${LDFLAG_build} \
-                      CFLAGS='-I${OUTPUT_DIR}/include -I${CMAKE_CURRENT_SOURCE_DIR}/include ${CMAKE_C_FLAGS}' \
-                      CXXFLAGS='-I${OUTPUT_DIR}/include -I${CMAKE_CURRENT_SOURCE_DIR}/include ${CMAKE_C_FLAGS}' \
+                      CFLAGS='-I${OUTPUT_DIR}/include -I${CMAKE_INSTALL_PREFIX}/include ${CMAKE_C_FLAGS}' \
+                      CXXFLAGS='-I${OUTPUT_DIR}/include -I${CMAKE_INSTALL_PREFIX}/include ${CMAKE_C_FLAGS}' \
                       --disable-shared \
                       --disable-qt \
                       --enable-preset-subdirs \
